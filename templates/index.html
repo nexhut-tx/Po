@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Dashboard</title>
+</head>
+<body>
+    <h1>Trading Signal Dashboard</h1>
+    <div id="signal-container">
+        <p>Loading signal...</p>
+    </div>
+
+    <script>
+        function fetchSignal() {
+            fetch('/get_signal')
+                .then(response => response.json())
+                .then(data => {
+                    const signalContainer = document.getElementById('signal-container');
+                    const { symbol, interval, signal, confidence } = data;
+                    
+                    signalContainer.innerHTML = `
+                        <h2>Market: ${symbol}</h2>
+                        <p>Interval: ${interval}</p>
+                        <p>Signal: <strong>${signal}</strong></p>
+                        <p>Confidence: <strong>${confidence}%</strong></p>
+                    `;
+                })
+                .catch(error => {
+                    console.error("Error fetching signal:", error);
+                });
+        }
+
+        // Fetch the signal when the page loads
+        window.onload = fetchSignal;
+    </script>
+</body>
+</html>
