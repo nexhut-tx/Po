@@ -1,0 +1,4 @@
+Flask==2.2.3
+pandas==1.5.3
+numpy==1.23.5
+ta==0.7.0  # Technical Analysis library (alternative to TA-Lib)
