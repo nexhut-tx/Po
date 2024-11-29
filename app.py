@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import pandas as pd
 import numpy as np
 from ta import momentum, trend, volatility  # TA-Lib alternative
+import os  # Import os module to read the environment variable
 
 app = Flask(__name__)
 
@@ -46,4 +47,6 @@ def get_signals():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Get the PORT environment variable, default to 5000 if not set
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
