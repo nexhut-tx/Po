@@ -1,5 +1,5 @@
 Flask==2.2.3
 pandas==1.5.3
 numpy==1.23.5
-ta==0.7.0  # Technical Analysis library (alternative to TA-Lib)
-Werkzeug==2.2.3  # Add this line to lock Werkzeug to a compatible version
+ta==0.7.0
+pocketoptionapi==1.0.0  # Or the appropriate version if you're using a specific package
